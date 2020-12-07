@@ -102,7 +102,7 @@ extension Reactive where Base: View {
                     guard let gesture = gesture else { return }
                     control?.removeGestureRecognizer(gesture)
                 })
-                .takeUntil(control.rx.deallocated)
+                .take(until: control.rx.deallocated)
         }
 
         return ControlEvent(events: source)
